@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 4px 0;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 18px;
+  background: var(--bg-atles-bubble);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  border-bottom-left-radius: 4px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
