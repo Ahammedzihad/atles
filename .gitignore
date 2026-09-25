@@ -1,0 +1,32 @@
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*.class
+
+# Virtual environments
+**/.venv/
+**/venv/
+**/ENV/
+
+# Testing / coverage
+**/.pytest_cache/
+**/.ruff_cache/
+**/.coverage
+**/htmlcov/
+
+# Environment files
+**/.env
+**/.env*.local
+!**/.env.example
+
+# Runtime databases
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Temporary backup files
+**/*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
