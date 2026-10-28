@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, HTTPException, status
 from openai import OpenAIError
 
@@ -27,9 +28,9 @@ async def chat_endpoint(
     payload: ChatRequest,
 ) -> ChatResponse:
     try:
+        # Create a new conversation or validate the existing one.
         if payload.conversation_id is None:
             conversation_id = create_conversation()
-
         else:
             conversation_id = payload.conversation_id
 
@@ -42,24 +43,30 @@ async def chat_endpoint(
                     ),
                 )
 
+        # Retrieve recent messages from the conversation.
         conversation_messages = get_conversation_context(
             conversation_id=conversation_id,
             limit=20,
         )
 
+        # Retrieve combined keyword and semantic long-term memory.
         memory_context = get_fused_memory_context(
             query=payload.message,
             limit=5,
         )
 
+        # Select the configured AI provider.
         service = get_ai_service()
 
+        # Generate a response using the user's message,
+        # retrieved memories, and conversation history.
         reply = await service.generate_response(
             payload.message,
             memory_context,
             conversation_messages,
         )
 
+        # Save the user message and assistant response.
         save_message(
             conversation_id=conversation_id,
             role="user",
